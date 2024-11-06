@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="col-sm-6" th:fragment="CompleteTable">
+
+		<div class="card " >
+			<div class="card-body">
+				<h5 class="card-title">Special title treatment</h5>
+				<p class="card-text">With supporting text below as a natural
+					lead-in to additional content.</p>
+
+				<table class="table table-striped ">
+					<thead>
+						<tr >
+							<th scope="col">Sr.No</th>
+							<th scope="col">Completed task</th>
+							<th scope="col">Back to task</th>
+							<th scope="col" >Delete</th>
+						</tr>
+					</thead>
+
+					<tbody th:each="t,itr:${m.comp}" th:if="${t != null}">
+						<tr>
+
+							<th th:text="${itr.index}"></th>
+							<td th:text="${t.Completed_task}"></td>
+
+							<td><a th:href="@{/Backtotask(Cid=${t.Cid} ,m=${m.mail})}"
+								class="btn btn-secondary"> <i class="bi bi-arrow-repeat"></i><br>
+								 Add in task
+							</a></td>
+
+							<td>
+							
+							
+							
+							
+							<div th:replace="Fragments:: Deleteconfirmation"></div> 
+									
+									
+							</td>
+
+						</tr>
+					<tbody>
+				</table>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+
+		</div>
+	</div>
+
+	
+
+</body>
+</html>

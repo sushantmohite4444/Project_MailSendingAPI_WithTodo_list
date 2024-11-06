@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/Views/css/Bootstrap.css}" rel="stylesheet" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Bootstrap JS -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+</head>
+<body>
+	<div class="container mt-1  full-height ">
+		<div class="row justify-content-center ">
+			<div
+				class="  col-md-6 border border-dark ps-5  pe-5 pb-5 p-1 bg-white shadow-lg mb-5 bg-body rounded">
+				<form th:method="post" th:action="@{/Home}">
+
+					<div class="alert-container">
+						<div class="alert alert-success alert-dismissible fade"
+							role="alert" id="autoAlert">
+							<strong id="AutogenText">:)</strong> .
+							<button type="button" class="close" data-dismiss="alert"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					
+					<h1 class="text-center fst-italic text-dark">Login Here</h1>
+					<!-- Email Input -->
+					<div class="form-group p-3">
+						<label for="email">Email address</label> <input type="email"
+							class="form-control" id="email" name="mail"
+							placeholder="Enter email" required>
+					</div>
+
+					<!-- Password Input -->
+					<div class="form-group pe-3 ps-3 pb-3">
+						<label for="password">Password</label> <input type="password"
+							class="form-control" id="password" name="password"
+							placeholder="Password" required>
+							<div class="text-end">
+							<a th:href="@{/Mailverification/forgotPass}" class="text-primary"> Forgot Password
+						</a>
+						</div>
+					</div>
+
+					<!-- Checkbox -->
+					<div class="form-check p-3 ">
+						<input type="checkbox" class="form-check-input" id="rememberMe"
+							required="required"> <label class="form-check-label"
+							for="rememberMe">All information is Correct</label>
+					</div>
+
+					<!-- Submit Button -->
+					<div class="text-center mt-5">
+						<button type="submit" class="btn btn-primary mt-3">Submit</button>
+					</div>
+					<!-- Register Button -->
+					<div class=" mt-1">
+						<a th:href="@{/Mailverification/register}" class="btn btn-secondary"> <i
+							class="fa fa-arrow-circle-o-left"></i>&nbsp;Register
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<script th:inline="javascript">
+       
+	let popup = [[${popup}]] ;
+	let message = [[${message}]];
+       if(popup=== true){ 
+    	       $('#AutogenText').text(message);
+                $('#autoAlert').addClass('show');
+                
+               
+                setTimeout(function() {
+                    $('#autoAlert').removeClass('show').addClass('fade');
+                }, 5000); // 5000 milliseconds = 5 seconds
+       }
+    </script>
+</body>
+</html>

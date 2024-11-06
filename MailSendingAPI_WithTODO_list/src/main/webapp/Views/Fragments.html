@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="Userinfo">
+	<div class="modal fade" id="confirmationModal" tabindex="-1"
+		role="dialog" aria-labelledby="confirmationModalLabel"
+		aria-hidden="true">
+
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h5 class="modal-title" id="confirmationModalLabel">User Details</h5>
+				</div>
+
+				<div class="modal-body">
+
+					<div class="container-fluid">
+
+						<div class="row justify-content-center">
+							<div class="col-md-4">
+								<img class='img-thumbnail'
+									th:src="'data:image/jpeg;base64,' + ${imageEncoder.getImgData(m.image)}" />
+							</div>
+						</div>
+					<hr>
+						<div class="row mt-4">
+							<div class="col">Your Name:</div>
+							<div class="col"><i th:text="${m.name}"></i></div>
+						</div>
+						
+						<div class="row mt-1">
+							<div class="col"> Your Last Name:</div>
+							<div class="col"><i th:text="${m.last_name}"></i></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+					<!-- <a th:href="@{/Home}" class="btn btn-primary">Confirm</a> -->
+					<span th:insert="FragmentUserInfoUpdate :: FragmentUserInfoUpdate"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<div th:fragment="Deleteconfirmation">
+
+		<button type="button" class="btn btn-success" data-toggle="modal"
+			data-target="#deleteconfirmationModal"><i class="bi bi-archive-fill">delete</i>
+			</button>
+
+		<div class="modal fade" id="deleteconfirmationModal" tabindex="-1"
+		role="dialog" aria-labelledby="confirmationModalLabel"
+		aria-hidden="true">
+		   
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h5 class="modal-title" id="confirmationModalLabel">Confirmation</h5>
+				</div>
+
+				<div class="modal-body">Are you sure you want to Delete Task  
+					Permanently</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Cancel</button>
+					<a th:href="@{/deletecomp(Cid=${t.Cid} ,m=${m.mail})}"
+						class="btn btn-primary">Confirm</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+</html>

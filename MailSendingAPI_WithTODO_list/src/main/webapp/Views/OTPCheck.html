@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OTP Verification</title>
+    <link th:href="@{/Views/css/Bootstrap.css}" rel="stylesheet" />
+    </head>
+<body>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">OTP Verification</div>
+                <div class="card-body">
+                    <form th:method="post" id="OTPForm" th:action="@{/SetPassword(email=${email})}" method="post">
+                        <div class="form-group">
+                            <label for="otp">Enter OTP:</label>
+                            <input type="text" class="form-control" id="otp" name="otp" required>
+                        </div>
+                   <!-- <div  class="container mt-5">
+								<div class="row justify-content-center">
+									<div class="col-md-6">
+										<div class="alert alert-warning" role="alert">
+											<span th:text="{}"></span>
+										</div>
+									</div>
+								</div>
+							</div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div th:with="otp=${otp}"></div> -->
+
+<script th:inline="javascript">
+    
+    var otpInput = document.getElementById("otp");
+
+    otpInput.addEventListener("keyup", function(event) {
+        
+        var inputValue = otpInput.value;
+		var OTP =[[${otp}]];	
+        
+       
+       
+        if (inputValue == OTP) {
+           
+            document.getElementById("OTPForm").submit();
+        }
+    });
+
+
+    
+   
+</script>
+</body>
+</html>

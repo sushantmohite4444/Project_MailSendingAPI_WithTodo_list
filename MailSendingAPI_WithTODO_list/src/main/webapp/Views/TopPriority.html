@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="col-sm-12"	th:fragment="TopPriority">
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Special title treatment</h5>
+			<p class="card-text">With supporting text below as a natural
+				lead-in to additional content.</p>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Sr.No</th>
+						<th scope="col">Top Priority Tasks</th>
+						<th scope="col">Remove From Top Priority</th>
+					</tr>
+				</thead>
+
+				<tbody th:each="t,itr:${m.tasksm}" th:if="${t != null}">
+					<tr>
+						<th th:text="${itr.index}"></th>
+						
+						<td th:text="${t.task.TPid}"></td>
+						<td><a th:href="@{/deletetask(Tid=${t.Tid} , m=${m.mail})}"
+							class="btn btn-secondary"> <i
+							class="fa fa-arrow-circle-o-left"></i>&nbsp; Task Completed
+						</a></td>
+					</tr>
+				<tbody>
+			</table>
+			<a th:href="@{/Task(m=${m.mail})}" class="btn btn-secondary">Add
+				Task </a>
+		</div>
+	</div>
+</div>
+</html>

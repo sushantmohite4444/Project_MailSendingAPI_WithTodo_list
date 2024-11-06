@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link th:href="@{/Views/css/Bootstrap.css}" rel="stylesheet" />
+</head>
+<body>
+<body style="background-color: rgba(104, 28, 67, 0.5); color: black;"
+	class="mb-2">
+
+	<div style="background-color: rgba(129, 143, 142, 1); color: black;"
+		class="offset-3 col-6 mt-3 border border-info">
+		<form th:method="post" class="p-5 pt-4" th:action="@{/Addtask}">
+			<h1 class="text-center fst-italic text-success">Add Task</h1>
+
+			<div class="mb-3">
+				<label for="exampleInputEmail1" class="form-label">Add Task
+				</label> <input
+					type="text" class="form-control" name="Task"
+					aria-describedby="emailHelp">
+			</div>
+
+			<div class="text-center mt-1">
+				<button type="submit" class="btn btn-outline-primary ">Submit</button>
+			</div>
+
+		<div>
+          <form th:action="@{/Home}" method="post">
+        <!-- Add any hidden fields if needed, or use just the button to navigate -->
+        <button type="submit" class="btn btn-outline-secondary">
+            <i class="fa fa-arrow-circle-o-left"></i>&nbsp; Back to Home
+        </button>
+    </form>
+    </div>
+
+		</form>
+	</div>
+
+</body>
+</html>
